@@ -16,6 +16,8 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 @EnableAuthorizationServer
 public class AuthorizationServerConfiguration  extends AuthorizationServerConfigurerAdapter{
 
+	private static final Integer UM_DIA = 3600 * 24;
+	
 	@Autowired
 	private AuthenticationManager authenticationManager;
 	
@@ -25,8 +27,9 @@ public class AuthorizationServerConfiguration  extends AuthorizationServerConfig
 			.withClient("root")
 			.secret("admin")
 			.scopes("read", "write")
-			.authorizedGrantTypes("password")
-			.accessTokenValiditySeconds(1800);
+			.authorizedGrantTypes("password", "refresh_token")
+			.accessTokenValiditySeconds(20)
+			.refreshTokenValiditySeconds(UM_DIA);
 	}
 	
 	@Override
@@ -34,6 +37,7 @@ public class AuthorizationServerConfiguration  extends AuthorizationServerConfig
 		endpoints
 			.tokenStore(tokenStore())
 			.accessTokenConverter(jwtAccessTokenConverter())
+			.reuseRefreshTokens(false)
 			.authenticationManager(authenticationManager);
 	}
 	
