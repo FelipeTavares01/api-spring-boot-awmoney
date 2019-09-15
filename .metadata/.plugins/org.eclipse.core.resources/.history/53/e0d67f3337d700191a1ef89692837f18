@@ -1,0 +1,5 @@
+package com.awmoney.api.resource;
+
+public class TokenResource {
+
+}

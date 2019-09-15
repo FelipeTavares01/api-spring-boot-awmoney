@@ -1,0 +1,13 @@
+package com.awmoney.api.repository.projection;
+
+public class ResumoLancamento {
+
+	private Long codigo;
+	private String descricao;
+	private LocalDate dataVencimento;
+	private LocalDate dataPagament;
+	private BigDecimal valor;
+	private TipoLancamento tipo;
+	private String categoria;
+	private String pessoa;
+}
