@@ -1,0 +1,18 @@
+package com.awmoney.api.repository.projection;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
+import com.awmoney.api.model.TipoLancamento;
+
+public class ResumoLancamento {
+
+	private Long codigo;
+	private String descricao;
+	private LocalDate dataVencimento;
+	private LocalDate dataPagament;
+	private BigDecimal valor;
+	private TipoLancamento tipo;
+	private String categoria;
+	private String pessoa;
+}
